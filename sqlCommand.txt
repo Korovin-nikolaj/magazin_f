@@ -1,0 +1,39 @@
+create table products (id int primary key auto_increment,
+    productName varchar(50),
+    price float,
+    productCategory varchar(25),
+    productCountry varchar(25),
+    discounted boolean);
+
+create table clients (id int primary key auto_increment,
+    Name varchar(50),
+    phone varchar(25),
+    hashPassword int);
+
+create table orders (id int primary key auto_increment,
+    client int NOT NULL,
+    sum float,
+    address varchar(100),
+    status int,
+    comments varchar(50));
+
+create table orderComposition (orderId int NOT NULL,
+    productId int NOT NULL, quantity float);
+
+create table statuses (id int primary key auto_increment,
+    name varchar(25) NOT NULL);
+
+create table wallets (id int primary key auto_increment,
+    client int not null,
+    sum float not null, comment varchar(50));
+
+insert into products (productName, price, productCategory, productCountry, discounted) values('Масло сливочное',600.0,'Молочные продукты','Россия',false);
+insert into products (productName, price, productCategory, productCountry, discounted) values('Творог',240.0,'Молочные продукты','Россия',false);
+insert into products (productName, price, productCategory, productCountry, discounted) values('Картофель',70.0,'Овощи','Россия',false);
+
+insert into statuses (id, name) values (1, 'Сформирован');
+insert into statuses (id, name) values (2, 'Оплачен');
+insert into statuses (id, name) values (3, 'В службе доставки');
+insert into statuses (id, name) values (4, 'Доставлен');
+ALTER TABLE `db_name`.`table_name` CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci
+-Dfile.encoding=UTF-8 -Duser.country=RU -Dlanguage=RU
